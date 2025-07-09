@@ -73,7 +73,7 @@ const DashboardHeader = () => {
                 <AnimatePresence>
                     {isProfileOpen && (
                         <motion.div
-                            className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden z-50"
+                            className="absolute right-0 mt-2 w-74 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden z-50"
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
