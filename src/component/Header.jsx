@@ -39,7 +39,7 @@ const Header = ({ user }) => {
 
     const navItems = [
         { name: 'Dashboard', icon: <FiHome />, path: '/dashboard' },
-        { name: 'My Notes', icon: <FiBook />, path: '/dashboard/notes' },
+        { name: 'My Notes', icon: <FiBook />, path: '/dashboard' },
         { name: 'About', icon: <FiInfo />, path: '/about' },
         { name: 'Contact', icon: <FiMail />, path: '/contact' },
     ];
