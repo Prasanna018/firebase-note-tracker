@@ -55,13 +55,48 @@ const AllNotes = () => {
 
     if (notes.length === 0) {
         return (
-            <div className="flex flex-col items-center justify-center h-64 text-gray-500">
-                <p className="text-xl">No notes found</p>
+            <div className="flex flex-col items-center justify-center h-[70vh] gap-6 animate-bounce-in">
+                <div className="relative">
+                    <svg
+                        className="w-24 h-24 text-gray-400 animate-float"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                        <path
+                            className="opacity-0 animate-draw"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M9 12h6m-6 4h6"
+                            style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}
+                        />
+                    </svg>
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-indigo-500 rounded-full animate-ping opacity-75"></div>
+                </div>
+
+                <p className="text-2xl font-bold text-gray-600 animate-text-rise">
+                    Your notebook is empty!
+                </p>
+                <p className="text-gray-500 mb-6 animate-text-rise" style={{ animationDelay: '0.2s' }}>
+                    Let's create something amazing
+                </p>
+
                 <button
                     onClick={() => navigate('/dashboard/create-note')}
-                    className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                    className="px-6 py-3 cursor-pointer bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-button-pop"
+                    style={{ animationDelay: '0.4s' }}
                 >
-                    Create Your First Note
+                    <span className="flex items-center gap-2">
+                        ✨ Create Your First Note
+                    </span>
                 </button>
             </div>
         );

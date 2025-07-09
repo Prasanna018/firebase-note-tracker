@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useUserAuth } from '../../context/useUserContext';
 import { getSingleNoteById } from '../../services/note-service';
 import { motion } from 'framer-motion';
 import { format } from 'date-fns';
 import { FiBookmark, FiClock, FiAlertCircle } from 'react-icons/fi';
+import { ArrowBigLeft, ArrowBigLeftDash } from 'lucide-react';
 
 const SingleNote = () => {
     const { id } = useParams();
@@ -82,6 +83,14 @@ const SingleNote = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
         >
+            <div className="group cursor-pointer p-2">
+                <Link to="/dashboard" className="inline-block cursor-pointer transition-transform hover:scale-[1.02] active:scale-95">
+                    <button className="flex items-center gap-2 px-4 cursor-pointer py-3 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:text-indigo-600 dark:hover:text-indigo-400">
+                        <ArrowBigLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+                        <span>Back to Notes</span>
+                    </button>
+                </Link>
+            </div>
             <div className="bg-white rounded-lg shadow-md p-6">
                 <div className="flex justify-between items-start mb-4">
                     <motion.h1
