@@ -37,7 +37,7 @@ const DashboardHeader = () => {
         >
             {/* Logo on the left */}
             <motion.div className='lg:ml-0 ml-18' whileHover={{ scale: 1.03 }}>
-                <Link to="/dashboard" className="flex items-center">
+                <Link to="/" className="flex items-center">
                     <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-2 shadow-md">
                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />

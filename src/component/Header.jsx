@@ -39,7 +39,7 @@ const Header = ({ user }) => {
 
     const navItems = [
         { name: 'Dashboard', icon: <FiHome />, path: '/dashboard' },
-        { name: 'My Notes', icon: <FiBook />, path: '/notes' },
+        { name: 'My Notes', icon: <FiBook />, path: '/dashboard/notes' },
         { name: 'About', icon: <FiInfo />, path: '/about' },
         { name: 'Contact', icon: <FiMail />, path: '/contact' },
     ];
@@ -97,7 +97,7 @@ const Header = ({ user }) => {
                                 ))}
                                 <motion.div whileHover={{ y: -2 }}>
                                     <Link
-                                        to="/notes/new"
+                                        to="/dashboard/create-note"
                                         className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:from-blue-600 hover:to-purple-600 flex items-center space-x-2 shadow-md hover:shadow-lg transition-all"
                                     >
                                         <FiPlus />
@@ -186,7 +186,7 @@ const Header = ({ user }) => {
 
                                         <motion.div whileHover={{ scale: 1.02 }}>
                                             <Link
-                                                to="/notes/new"
+                                                to="/dashboard/create-note"
                                                 className="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg mt-2"
                                                 onClick={() => setIsMenuOpen(false)}
                                             >

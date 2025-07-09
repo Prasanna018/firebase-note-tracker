@@ -85,3 +85,34 @@ export const deleteNote = async (userId, noteId) => {
         throw error;
     }
 };
+
+
+
+export const getSingleNoteById = async (userId, noteId) => {
+    try {
+        const notesRef = collection(db, COLLECTION_NAME);
+        const q = query(
+            notesRef,
+            where('id', '==', userId),
+            where('note.noteId', '==', noteId)
+        );
+
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            console.log('No matching document found');
+            return null;
+        }
+
+
+        const docData = querySnapshot.docs[0].data();
+        return {
+            id: querySnapshot.docs[0].id,
+            ...docData
+        };
+
+    } catch (error) {
+        console.error('Error fetching note:', error);
+        throw error;
+    }
+};
