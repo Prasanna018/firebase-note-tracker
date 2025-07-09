@@ -51,16 +51,11 @@ const Dashboard = () => {
     };
 
     const sidebarItems = [
-        {
-            section: 'Overview',
-            items: [
-                { id: 'analytics', icon: <FiPieChart />, label: 'Analytics', path: '/dashboard' },
-            ]
-        },
+
         {
             section: 'Notes',
             items: [
-                { id: 'notes', icon: <FiFileText />, label: 'All Notes', path: '/dashboard/notes' },
+                { id: 'notes', icon: <FiFileText />, label: 'All Notes', path: '/dashboard' },
                 { id: 'create', icon: <FiPlus />, label: 'Create Note', path: '/dashboard/create-note' },
 
                 { id: 'bookmarks', icon: <FiBookmark />, label: 'Bookmarks', path: '/dashboard/bookmarks' },

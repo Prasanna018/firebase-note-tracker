@@ -62,14 +62,9 @@ const RichTextEditor = ({ content, onChange, onSave }) => {
             }),
         ],
         content: content || `
-            <h1>Welcome to your new document!</h1>
-            <p>Start typing here to begin your content. You can:</p>
-            <ul>
-                <li>Type <strong>/</strong> to see formatting options</li>
-                <li>Use the toolbar above for formatting</li>
-                <li>Right-click for context menu</li>
-            </ul>
-            <p>Try adding headings, lists, or images to get started!</p>
+       
+            <p>Start from here...</p>
+         
         `,
         onUpdate: ({ editor }) => {
             onChange(editor.getHTML())

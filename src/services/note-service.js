@@ -116,3 +116,4 @@ export const getSingleNoteById = async (userId, noteId) => {
         throw error;
     }
 };
+

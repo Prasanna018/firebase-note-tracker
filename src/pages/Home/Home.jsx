@@ -4,6 +4,7 @@ import Header from '../../component/Header';
 import HeroSection from '../../component/HeroSection ';
 import NotesTrackerFeatures from '../../component/Features';
 import InfiniteScrollTestimonials from '../../component/FeedBack';
+import Footer from '../../component/Footer';
 
 const Home = () => {
     const { user } = useUserAuth();
@@ -14,6 +15,7 @@ const Home = () => {
             <HeroSection></HeroSection>
             <NotesTrackerFeatures></NotesTrackerFeatures>
             <InfiniteScrollTestimonials></InfiniteScrollTestimonials>
+            <Footer></Footer>
         </div>
     )
 }

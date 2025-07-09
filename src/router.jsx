@@ -7,6 +7,7 @@ import CreateNote from "./pages/create-note/CreateNote";
 import Analytics from "./pages/Analytics/Analytics";
 import AllNotes from "./pages/all-notes/AllNotes";
 import SingleNote from "./pages/Single-Note/SingleNote";
+import Bookmarks from "./pages/Bookmarks/Bookmarks";
 
 
 export const router = createBrowserRouter([
@@ -26,21 +27,22 @@ export const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
         path: '/dashboard',
         children: [
-            {
-                element: <Analytics></Analytics>,
-                index: true
-            },
+
             {
                 element: <CreateNote></CreateNote>,
                 path: '/dashboard/create-note'
             }, {
                 element: <AllNotes></AllNotes>,
-                path: '/dashboard/notes'
+                path: '/dashboard',
+                index: true
 
             },
             {
                 element: <SingleNote></SingleNote>,
                 path: '/dashboard/notes/:id'
+            }, {
+                element: <Bookmarks></Bookmarks>,
+                path: '/dashboard/bookmarks'
             }
         ]
 
