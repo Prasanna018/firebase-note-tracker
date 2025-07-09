@@ -42,7 +42,7 @@ function CreateNote() {
             const result = await createNote(note);
             if (result) {
                 toast.success('Note created successfully!');
-                navigate('/dashboard/notes');
+                navigate('/dashboard');
             }
         } catch (error) {
             toast.error('Failed to create note. Please try again.');
