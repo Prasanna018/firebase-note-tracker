@@ -66,7 +66,7 @@ const Dashboard = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col">
-            {/* Header - Fixed at top */}
+
             <div className='fixed w-full top-0 left-0 z-40 bg-white shadow-sm'>
                 <div className="relative">
                     <DashboardHeader />
@@ -150,7 +150,7 @@ const Dashboard = () => {
                 )}
             </AnimatePresence>
 
-            {/* Main Content */}
+
             <div className={`flex-1 pt-16 transition-all duration-300 ${isSidebarOpen ? 'md:ml-64' : 'md:ml-0'}`}>
                 <motion.div
                     initial={{ opacity: 0 }}

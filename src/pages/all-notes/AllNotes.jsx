@@ -36,7 +36,7 @@ const AllNotes = () => {
             const result = await deleteNote(user.uid, id);
             if (result) {
                 toast.success('Note deleted successfully');
-                // Update the notes state by filtering out the deleted note
+                // filtering and updating the setNotes to get updated notes
                 setNotes(prevNotes => prevNotes.filter(noteItem => noteItem.note.noteId !== id));
             }
         } catch (error) {

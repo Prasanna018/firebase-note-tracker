@@ -59,7 +59,7 @@ const Login = () => {
         }
     }, [controls, inView]);
 
-    // Animation variants
+
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -111,7 +111,7 @@ const Login = () => {
                             </p>
                         </motion.div>
 
-                        {/* Animated Note Lines */}
+
                         <div className="space-y-6">
                             <motion.div
                                 className="bg-white bg-opacity-20 rounded-lg p-4 backdrop-blur-sm"

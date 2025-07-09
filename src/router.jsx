@@ -4,7 +4,7 @@ import Login from "./pages/Login/Login";
 import SignIn from "./pages/Signin/SignIn";
 import Dashboard from "./pages/dashboard/Dashboard";
 import CreateNote from "./pages/create-note/CreateNote";
-import Analytics from "./pages/Analytics/Analytics";
+
 import AllNotes from "./pages/all-notes/AllNotes";
 import SingleNote from "./pages/Single-Note/SingleNote";
 import Bookmarks from "./pages/Bookmarks/Bookmarks";
