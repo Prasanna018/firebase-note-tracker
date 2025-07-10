@@ -5,7 +5,7 @@ import { deleteNote, getNoteById, toggleBookmark } from '../../services/note-ser
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiBookmark, FiTrash2, FiEdit2, FiEye, FiClock } from 'react-icons/fi';
+import { FiBookmark, FiTrash2, FiEdit2, FiEye, FiClock, FiFileText } from 'react-icons/fi';
 import { format } from 'date-fns';
 
 const AllNotes = () => {
@@ -79,9 +79,75 @@ const AllNotes = () => {
 
     if (notes.length === 0) {
         return (
-            <div className="flex flex-col items-center justify-center h-[70vh] gap-6 animate-bounce-in">
-                {/* ... existing empty state UI ... */}
-            </div>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col items-center justify-center h-[70vh] gap-6"
+            >
+                <motion.div
+                    animate={{
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 5, -5, 0],
+                    }}
+                    transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        ease: "easeInOut"
+                    }}
+                    className="text-gray-400"
+                >
+                    <FiFileText size={80} />
+                </motion.div>
+
+                <motion.h2
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-2xl font-bold text-gray-700"
+                >
+                    No Notes Found
+                </motion.h2>
+
+                <motion.p
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-gray-500 text-center max-w-md"
+                >
+                    You don't have any notes yet. Create your first note to get started!
+                </motion.p>
+
+                <motion.button
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => navigate('/dashboard/create-note')}
+                    className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-colors"
+                >
+                    Create Your First Note
+                </motion.button>
+
+                <motion.div
+                    className="absolute bottom-10"
+                    animate={{
+                        y: [0, 10, 0],
+                    }}
+                    transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        ease: "easeInOut"
+                    }}
+                >
+                    <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </motion.div>
+            </motion.div>
         );
     }
 
