@@ -13,11 +13,14 @@ import {
     FiStar,
     FiBook
 } from 'react-icons/fi';
+import { useUserAuth } from '../../context/useUserContext';
 
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const location = useLocation();
+    const { user } = useUserAuth();
+    console.log(user)
 
     const sidebarItems = [
         {
@@ -113,9 +116,10 @@ const Dashboard = () => {
                             className={`w-64 bg-gradient-to-b from-white to-gray-50 border-r border-gray-200 fixed top-0 left-0 h-screen z-50 mt-19`}
                         >
                             <div className="p-4 h-full flex flex-col overflow-y-auto">
-                                <div className="mb-6">
+                                <div className="mb-6 flex flex-col justify-center">
                                     <h2 className="text-xl font-bold text-gray-800 px-2">Dashboard</h2>
-                                    <p className="text-xs text-gray-500 px-2">Welcome back!</p>
+                                    <p className="text-xs text-gray-500 px-2">Welcome back! </p>
+                                    <p className='text-lg font-semibold'>{user.displayName}</p>
                                 </div>
 
                                 <nav className="flex-1 space-y-6">

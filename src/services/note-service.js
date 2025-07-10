@@ -14,7 +14,7 @@ export const createNote = (note) => {
 
 // get all notes of perticular user using there userId
 export const getNoteById = async (userId) => {
-    console.log("Fetching notes for user ID:", userId);
+
 
     try {
 
@@ -41,7 +41,7 @@ export const getNoteById = async (userId) => {
             });
         });
 
-        console.log("Found notes:", notes);
+
         return notes;
 
     } catch (error) {
