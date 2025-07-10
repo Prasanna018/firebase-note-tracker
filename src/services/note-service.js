@@ -153,3 +153,62 @@ export const updateNoteById = async (userId, noteId, updatedNoteData) => {
     }
 };
 
+
+// toggle bookmark //
+
+
+export const toggleBookmark = async (userId, noteId, currentBookmarkStatus) => {
+    try {
+        const notesRef = collection(db, COLLECTION_NAME);
+        const q = query(
+            notesRef,
+            where('id', '==', userId),
+            where('note.noteId', '==', noteId)
+        );
+
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            console.log('No matching document found');
+            return null;
+        }
+
+        const docRef = doc(db, COLLECTION_NAME, querySnapshot.docs[0].id);
+        await updateDoc(docRef, {
+            'note.bookMarked': !currentBookmarkStatus
+        });
+
+        return !currentBookmarkStatus; // Return the new bookmark status
+    } catch (error) {
+        console.error('Error toggling bookmark:', error);
+        throw error;
+    }
+};
+
+
+// get bookmarked notes 
+export const getBookmarkedNotes = async (userId) => {
+    try {
+        const notesRef = collection(db, 'notes'); // Replace 'notes' with your collection name
+        const q = query(
+            notesRef,
+            where('id', '==', userId), // Assuming 'id' is the field storing user ID
+            where('note.bookMarked', '==', true) // Query for bookmarked notes
+        );
+
+        const querySnapshot = await getDocs(q);
+        const bookmarkedNotes = [];
+
+        querySnapshot.forEach((doc) => {
+            bookmarkedNotes.push({
+                id: doc.id,
+                ...doc.data()
+            });
+        });
+
+        return bookmarkedNotes;
+    } catch (error) {
+        console.error('Error fetching bookmarked notes:', error);
+        throw error;
+    }
+};

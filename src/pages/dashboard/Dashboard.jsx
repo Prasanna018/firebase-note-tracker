@@ -16,12 +16,36 @@ import {
 
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [activeTab, setActiveTab] = useState('analytics');
     const [isMobile, setIsMobile] = useState(false);
     const location = useLocation();
 
+    const sidebarItems = [
+        {
+            section: 'Notes',
+            items: [
+                { id: 'notes', icon: <FiFileText />, label: 'All Notes', path: '/dashboard' },
+                { id: 'create', icon: <FiPlus />, label: 'Create Note', path: '/dashboard/create-note' },
+                { id: 'bookmarks', icon: <FiBookmark />, label: 'Bookmarks', path: '/dashboard/bookmarks' },
+            ]
+        },
+    ];
+
+    // Find the active tab based on current path
+    const getActiveTab = () => {
+        const currentPath = location.pathname;
+        for (const group of sidebarItems) {
+            const foundItem = group.items.find(item => item.path === currentPath);
+            if (foundItem) return foundItem.id;
+        }
+        return 'notes'; // default if no match found
+    };
+
+    const [activeTab, setActiveTab] = useState(getActiveTab());
 
     useEffect(() => {
+        // Update active tab when location changes
+        setActiveTab(getActiveTab());
+
         const handleResize = () => {
             const mobile = window.innerWidth < 768;
             setIsMobile(mobile);
@@ -32,12 +56,8 @@ const Dashboard = () => {
             }
         };
 
-
         handleResize();
-
-
         window.addEventListener('resize', handleResize);
-
 
         if (window.innerWidth < 768) {
             setIsSidebarOpen(false);
@@ -50,23 +70,8 @@ const Dashboard = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-    const sidebarItems = [
-
-        {
-            section: 'Notes',
-            items: [
-                { id: 'notes', icon: <FiFileText />, label: 'All Notes', path: '/dashboard' },
-                { id: 'create', icon: <FiPlus />, label: 'Create Note', path: '/dashboard/create-note' },
-
-                { id: 'bookmarks', icon: <FiBookmark />, label: 'Bookmarks', path: '/dashboard/bookmarks' },
-
-            ]
-        },
-    ];
-
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col">
-
             <div className='fixed w-full top-0 left-0 z-40 bg-white shadow-sm'>
                 <div className="relative">
                     <DashboardHeader />
@@ -125,7 +130,6 @@ const Dashboard = () => {
                                                         <Link
                                                             to={item.path}
                                                             onClick={() => {
-                                                                setActiveTab(item.id);
                                                                 if (isMobile) {
                                                                     setIsSidebarOpen(false);
                                                                 }
@@ -149,7 +153,6 @@ const Dashboard = () => {
                     </>
                 )}
             </AnimatePresence>
-
 
             <div className={`flex-1 pt-16 transition-all duration-300 ${isSidebarOpen ? 'md:ml-64' : 'md:ml-0'}`}>
                 <motion.div

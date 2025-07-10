@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { updateNoteById, getSingleNoteById } from '../../services/note-service';
 import { useUserAuth } from '../../context/useUserContext';
 
 import EditorRichTextEditor from '../../component/EditorRichTextEdit';
+import { ArrowBigLeft } from 'lucide-react';
 
 const EditNote = () => {
     const { id } = useParams();
@@ -83,6 +84,14 @@ const EditNote = () => {
 
     return (
         <div className="w-full h-screen p-4 md:p-6 flex flex-col">
+            <div className="group cursor-pointer p-2">
+                <Link to="/dashboard" className="inline-block cursor-pointer transition-transform hover:scale-[1.02] active:scale-95">
+                    <button className="flex items-center gap-2 px-4 cursor-pointer py-3 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:text-indigo-600 dark:hover:text-indigo-400">
+                        <ArrowBigLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+                        <span>Back to Notes</span>
+                    </button>
+                </Link>
+            </div>
             <h1 className="text-2xl font-bold mb-6">Edit Note</h1>
 
             <div className="mb-4">
