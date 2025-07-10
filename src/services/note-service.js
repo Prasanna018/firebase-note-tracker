@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore"
 import { db } from "../firebase-config/firebaseConfig"
 
 
@@ -113,6 +113,42 @@ export const getSingleNoteById = async (userId, noteId) => {
 
     } catch (error) {
         console.error('Error fetching note:', error);
+        throw error;
+    }
+};
+
+
+export const updateNoteById = async (userId, noteId, updatedNoteData) => {
+    try {
+        const notesRef = collection(db, COLLECTION_NAME);
+        const q = query(
+            notesRef,
+            where('id', '==', userId),
+            where('note.noteId', '==', noteId)
+        );
+
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            console.log('No matching document found');
+            return null;
+        }
+
+        // Get the document reference
+        const docRef = doc(db, COLLECTION_NAME, querySnapshot.docs[0].id);
+
+        // Update the document
+        await updateDoc(docRef, updatedNoteData);
+
+        // Return the updated document
+        const updatedDoc = await getDoc(docRef);
+        return {
+            id: updatedDoc.id,
+            ...updatedDoc.data()
+        };
+
+    } catch (error) {
+        console.error('Error updating note:', error);
         throw error;
     }
 };

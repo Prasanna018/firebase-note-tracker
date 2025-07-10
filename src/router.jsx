@@ -8,6 +8,7 @@ import CreateNote from "./pages/create-note/CreateNote";
 import AllNotes from "./pages/all-notes/AllNotes";
 import SingleNote from "./pages/Single-Note/SingleNote";
 import Bookmarks from "./pages/Bookmarks/Bookmarks";
+import EditNote from "./pages/edit-note/EditNote";
 
 
 export const router = createBrowserRouter([
@@ -43,6 +44,9 @@ export const router = createBrowserRouter([
             }, {
                 element: <Bookmarks></Bookmarks>,
                 path: '/dashboard/bookmarks'
+            }, {
+                element: <EditNote></EditNote>,
+                path: '/dashboard/edit-note/:id'
             }
         ]
 
